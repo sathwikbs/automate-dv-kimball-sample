@@ -1,0 +1,38 @@
+# Copy this file to ~/.dbt/profiles.yml and fill in your credentials
+
+default:
+  target: dev
+  outputs:
+    dev:
+      # === Databricks ===
+      type: databricks
+      catalog: your_catalog
+      schema: your_schema
+      host: your-workspace.cloud.databricks.com
+      http_path: /sql/1.0/warehouses/your-warehouse-id
+      token: "{{ env_var('DBT_DATABRICKS_TOKEN') }}"
+
+      # === Snowflake ===
+      # type: snowflake
+      # account: your_account
+      # user: your_user
+      # password: "{{ env_var('DBT_SNOWFLAKE_PASSWORD') }}"
+      # role: your_role
+      # database: your_database
+      # warehouse: your_warehouse
+      # schema: your_schema
+
+      # === BigQuery ===
+      # type: bigquery
+      # method: oauth
+      # project: your-project
+      # dataset: your_dataset
+
+      # === PostgreSQL ===
+      # type: postgres
+      # host: localhost
+      # port: 5432
+      # user: your_user
+      # password: "{{ env_var('DBT_PG_PASSWORD') }}"
+      # dbname: your_database
+      # schema: your_schema
